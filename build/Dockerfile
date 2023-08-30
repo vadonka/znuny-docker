@@ -7,7 +7,8 @@ LABEL maintainer="Peter Donka <peter.donka@gmail.com>"
 FROM builder as build1
 # Install Basics
 RUN yum update -y
-RUN yum install -y epel-release httpd mariadb mariadb-server cpanminus gcc dnf-plugins-core mc bind-utils wget curl python2 rsyslog net-tools
+RUN yum install -y wget curl bash epel-release mariadb mariadb-server \
+    httpd cpanminus gcc dnf-plugins-core mc bind-utils python2 rsyslog net-tools
 RUN yum groupinstall -y "Development Tools"
 RUN yum config-manager --set-enabled powertools
 
@@ -24,6 +25,7 @@ RUN rm -rf /lib/systemd/system/multi-user.target.wants/ \
 
 RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py -O /usr/local/bin/systemctl
 RUN chmod +x /usr/local/bin/systemctl
+RUN systemctl enable rsyslog mariadb httpd
 
 FROM build2 as build3
 # Install Znuny

@@ -5,13 +5,15 @@ services:
     restart: no
     environment:
       - TZ=Europe/Budapest
+    env_file:
+      - .env
     ports:
       - 8080:80
     volumes:
-      - mariadb:/var/lib/mysql
-      - znuny_kernel:/opt/znuny/Kernel
+      - db:/var/lib/mysql
+      - kernel:/opt/znuny/Kernel
       - /etc/localtime:/etc/localtime:ro
 
 volumes:
-    mariadb:
-    znuny_kernel:
+  db:
+  kernel:
