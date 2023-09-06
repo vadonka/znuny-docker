@@ -1,6 +1,6 @@
 FROM almalinux:8.8 as builder
 
-ENV ZNUNY_VERS=7.0.9-01
+ENV ZNUNY_VERS=7.0.10-01
 
 LABEL maintainer="Peter Donka <peter.donka@gmail.com>"
 

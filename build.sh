@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker build -t archanfelhun/zoneminder:master-php-8.1 .
+docker pull almalinux:8.8
+docker build -t archanfelhun/znuny:7.0.10-01 ./build
+docker build -t archanfelhun/znuny:latest ./build
